@@ -8,6 +8,7 @@ import { useRouter } from 'next/router';
 export default function Home(props) {
 
   const router = useRouter()
+  
 
   return(
     <div className={styles.container}>
@@ -15,21 +16,19 @@ export default function Home(props) {
       <Head> 
         <title>Pokemon</title>
       </Head>
-
-  
+       
         {props.data.map((pokemon, index) => {
           return(
             <div className={styles.pokemon} key={index}>
-              <h1>{pokemon.name}</h1>
-              <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${index + 1}.png`} alt={pokemon.name} /> 
               
+              <Link href={{pathname: `/pokemon/${pokemon.name}`}}>
+                <button >
+                  <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${index + 1}.png`} alt={pokemon.name} />
+                  <h2>{pokemon.name}</h2>
+                </button>
+              </Link>
             </div>
-
-          )
-
-        })
-      }
-      
+          )})}
     </div>
   )
 }
@@ -38,15 +37,22 @@ export default function Home(props) {
 
 export async function getStaticProps() {
 
-  // const limit = 20
-  const res = await fetch(`https://pokeapi.co/api/v2/pokemon`)
-  const data = await res.json()
-
-  return {
-    props: {
+  try{
+    const res = await fetch(`https://pokeapi.co/api/v2/pokemon`)
+    const data = await res.json()
+     
+    return {
+      props: {
       data: data.results
+     }
     }
+  } catch (error) {
+    console.log(error)
   }
+
+  // return{
+  //   props: {}
+  // }
 
 }
 
