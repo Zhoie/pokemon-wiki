@@ -6,6 +6,9 @@ import styles from '../../styles/Pokemon.module.css'
 export default function Pokemon(props) {
 
     const router = useRouter()
+
+    const height = props.data.height / 10
+    const weight = props.data.weight / 10
    
     return (
         <>
@@ -14,8 +17,8 @@ export default function Pokemon(props) {
                 <ul>
                     <li>id:{props.data.id}</li>
                     <li>name: {props.data.name}</li>
-                    <li>height: {props.data.height}</li>
-                    <li>weight: {props.data.weight}</li>
+                    <li>height: {height} m</li>
+                    <li>weight: {weight} kg</li>
                     <li>base experience: {props.data.base_experience}</li>
 
                 </ul>
