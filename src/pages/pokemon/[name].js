@@ -12,14 +12,14 @@ export default function Pokemon(props) {
    
     return (
         <>
-            <div className = "pokemonCard">
+            <div className = {styles.pokemonCard}>
                 <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${props.data.id}.png`} alt={props.data.name} />
-                <ul>
-                    <li>id:{props.data.id}</li>
-                    <li>name: {props.data.name}</li>
-                    <li>height: {height} m</li>
-                    <li>weight: {weight} kg</li>
-                    <li>base experience: {props.data.base_experience}</li>
+                <ul className={styles.pokemonDetails}>
+                    <li><span className={styles.pokemonLabel}>id:</span>{props.data.id}</li>
+                    <li><span className={styles.pokemonLabel}>name:</span> {props.data.name}</li>
+                    <li><span className={styles.pokemonLabel}>height:</span> {height} m</li>
+                    <li><span className={styles.pokemonLabel}>weight:</span> {weight} kg</li>
+                    <li><span className={styles.pokemonLabel}>base experience:</span> {props.data.base_experience}</li>
 
                 </ul>
             </div>
@@ -51,4 +51,3 @@ export async function getServerSideProps({query}) {
     }
 
 }
-
