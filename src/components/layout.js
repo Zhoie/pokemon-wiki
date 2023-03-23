@@ -13,7 +13,7 @@ export default function Layout({ children }) {
                 <title>Pokemon</title>
             </Head>
 
-            <h1>Pokemon Dex</h1>
+            <h1 className="nav-title">Pokemon Dex</h1>
 
             <nav className="header-nav">
                 <ul>
