@@ -1,35 +1,52 @@
+import styles from '../styles/Home.module.css';
+
+import Head from 'next/head';
 import Link from 'next/link';
-import { useState, useEffect } from 'react';
-import axios from 'axios';
+import { useRouter } from 'next/router';
 
-export default function Home() {
+
+export default function Home(props) {
+
+  const router = useRouter()
+
+  return(
+    <div className={styles.container}>
+      
+      <Head> 
+        <title>Pokemon</title>
+      </Head>
+
   
-  const [pokemonList, setPokemonList] = useState([]);
+        {props.data.map((pokemon, index) => {
+          return(
+            <div className={styles.pokemon} key={index}>
+              <h1>{pokemon.name}</h1>
+              <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${index + 1}.png`} alt={pokemon.name} /> 
+              
+            </div>
 
-  useEffect(() => {
-    axios.get('https://pokeapi.co/api/v2/pokemon?limit=151')
-      .then((response) => {
-        const { results } = response.data;
-        const pokemonNames = results.map((result) => result.name);
-        setPokemonList(pokemonNames);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, []);
+          )
 
-  return (
-    <div>
-      <h1>Pokedex</h1>
-      <ul>
-        {pokemonList.map((name) => (
-          <li key={name}>
-            <Link href={`/pokemon/${name}`}>
-              {name}
-            </Link>
-          </li>
-        ))}
-      </ul>
+        })
+      }
+      
     </div>
-  );
+  )
 }
+
+
+
+export async function getStaticProps() {
+
+  // const limit = 20
+  const res = await fetch(`https://pokeapi.co/api/v2/pokemon`)
+  const data = await res.json()
+
+  return {
+    props: {
+      data: data.results
+    }
+  }
+
+}
+
