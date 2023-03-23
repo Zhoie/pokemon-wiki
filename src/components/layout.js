@@ -18,7 +18,6 @@ export default function Layout({ children }) {
             <nav className="header-nav">
                 <ul>
                     <li><Link href="/">home</Link></li>
-                    {/* <li><Link href="/ability">ability</Link></li> */}
                 </ul>
 
             </nav>
