@@ -5,11 +5,12 @@
 .container {
 
   background-color: #F9F4EB;
-  columns: 5 ;
+  columns: 3 ;
   font-family: 'Golos Text', sans-serif;
   font-family: 'Tilt Warp', cursive;
   font-size: 100%;
-  margin: auto;
+  margin-right: 20px;
+  margin-left: 20px;
 }
 
 .pokemon {
