@@ -1,11 +1,8 @@
 import Link from 'next/link'
 import Head from 'next/head'
-import { useRouter } from 'next/router'
 
 export default function Layout({ children }) {
-    const router = useRouter()
-
-    return(
+    return (
         <>
             <Head>
                 <title>Pokemon</title>
@@ -17,7 +14,7 @@ export default function Layout({ children }) {
                 </ul>
             </nav>
 
-            { children }
+            {children}
         </>
     )
 }
