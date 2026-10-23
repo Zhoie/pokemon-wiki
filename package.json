@@ -6,11 +6,13 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint src"
+    "lint": "eslint src",
+    "test:security": "node --test scripts/test-braces-security.mjs",
+    "prebuild": "node --test scripts/test-braces-security.mjs"
   },
   "dependencies": {
     "@phosphor-icons/react": "^2.1.10",
-    "next": "^16.3.4",
+    "next": "16.4.2",
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
     "swr": "^2.5.0"
@@ -19,9 +21,13 @@
     "@eslint/js": "^10.0.1",
     "@next/eslint-plugin-next": "^16.3.0",
     "eslint": "^10.0.3",
-    "globals": "^16.5.0"
+    "globals": "^16.5.0",
+    "braces": "file:./vendor/braces-security/braces-security.tgz"
   },
   "engines": {
     "node": ">=22.23.4 <23"
+  },
+  "overrides": {
+    "braces": "$braces"
   }
 }
